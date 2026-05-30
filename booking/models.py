@@ -24,6 +24,10 @@ class Apartment(models.Model):
     def __Str__(self):
         return f"{self.title} - {self.location} - 💲{self.price} грн"
     
+    class Meta:
+        verbose_name = 'Апартаменти'
+        verbose_name_plural = 'Апартаменти'
+        ordering = ['title', 'price']
 
 class Booking(models.Model):
     apartment = models.ForeignKey(Apartment, on_delete=models.CASCADE)
@@ -40,3 +44,10 @@ class Booking(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True,blank=True)
 
+    def __str__(self):
+        return f"Бронювання: {self.apartment.title} - {self.name} {self.surname} - {self.check_in.date()} до {self.check_out.date()} - ${self.total_price} грн"
+
+    class Meta:
+        verbose_name = 'Бронювання'
+        verbose_name_plural = 'Бронювання'
+        ordering = ['-created_at']
