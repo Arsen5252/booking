@@ -8,3 +8,9 @@ def home(request):
 def apartment_page(request, apartment_id):
     apartment = Apartment.object.get(id = apartment_id)
     return render(request,'apartment_page.html', {'apartment': apartment})
+
+
+def booking_page(request, apartment_id):
+    apartment = Apartment.object.get(id = apartment_id)
+    
+    return render(request,'booking.html', {'apartment': apartment})
