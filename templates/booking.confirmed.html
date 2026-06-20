@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+<div class="col-md-6 ms-4 mt-3">
+        <p>Дякуємо за ваше бронювання, {{ booking.first_name }} {{ booking.last_name }}!</p>
+        <p>Деталі вашого бронювання:</p>
+        <ul>
+            <li>Пошта: {{booking.email }}</li>
+            <li>Телефон: {{ booking.phone }}</li>
+            <li>Дата заїзду: {{ booking.check_in }}</li>
+            <li>Дата виїзду: {{ booking.check_out }}</li>
+            <li>Загальна вартість: {{ booking.total_price }}</li>
+        </ul>
+
+        {% block content %}
+        {% endblock %}
+    </div>

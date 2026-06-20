@@ -6,8 +6,9 @@ from booking import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('apartments/<int:apartment_id>', views.apartment_page,  name='apartment_page'),
-    path('booking/<int:apartment_id>', views.booking_page, name='booking_page',)
-    
+    path('booking/<int:apartment_id>', views.booking_page, name='booking_page'),
+    path('my_bookings/', views.my_bookings, name='my_bookings'),
+
 ]
 
 

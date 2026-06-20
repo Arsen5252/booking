@@ -5,21 +5,35 @@
 <h1>Бронювання</h1>
 
 <div class="row">
-    <div class="col-md-6">
-        <div class="card">
-        <img src="{{ apartment.image.url }}" class="img-fluid" alt="{{ apartment.title }}">
+    <div class="col-md-4">
+        <div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{apartment.image.url}}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{apartment.title}}</h5>
+        <p class="card-text">Локація: {{apartment.location}}</p>
+        <span class="fw-bold text-primary">{{apartment.price}} грн</span>
         </div>
+      </div>
     </div>
-    <div class="col-md-6">
-        <h2>{{ apartment.title }}</h2>
-        <p>{{ apartment.description }}</p>
-        <p><strong>Локація:</strong> {{ apartment.location }}</p>
-        <p><strong>Ціна за ніч:</strong> {{ apartment.price }} грн</p>
-        <a href="#" class="btn btn-primary">Забронювати</a>
+  </div>
     </div>
-</div>
-        <form action="" method="post">
+    <div class="col-md-8">
+       <form action="" method="post">
             {% csrf_token %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Помилка!</strong> {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <div class="row mb-3 g-3">
             <div class="col-md-6">
     <label for="inputEmail4" class="form-label">Дата заїзду</label>
     <input name="check_in" type="datetime-local" class="form-control" id="inputEmail4">
@@ -28,7 +42,8 @@
     <label for="inputPassword4" class="form-label">Дата виїзду</label>
     <input name="check_out" type="datetime-local" class="form-control" id="inputPassword4">
   </div>
-            <div class="row">
+  </div>
+            <div class="row mb-3 g-3  ">
   <div class="col">
     <input name="name" type="text" required class="form-control" placeholder="Введіть ім'я" aria-label="First name">
   </div>
@@ -46,6 +61,9 @@
 </div>
 
 <button type="submit" class="btn btn-primary mt-3">Підтвердити бронювання</button>
+        </form> 
+    </div>
+</div>
         
 
 

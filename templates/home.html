@@ -4,7 +4,22 @@
 
     <h1>Booking</h1>
 
-    
+    <form action="" method="get">
+        <div class="row g-3 mb-3">
+            <div class="col-md-4">
+                <label for="inputEmail4" class="form-label">Дата і час заїзду</label>
+                <input name="check_in" type="datetime-local" required class="form-control" id="inputEmail4">
+            </div>
+            <div class="col-md-4">
+                <label for="inputPassword4" class="form-label">Дата і час виїзду</label>
+                <input name="check_out" type="datetime-local"  required class="form-control" id="inputPassword4">
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary mt-4" id="calculatePrice">Пошук</button>
+            </div>
+        </div>
+
+    </form>
 
      {% for apart in apartments %}
         <div class="card mb-3" style="max-width: 540px;">
@@ -17,12 +32,12 @@
         <h5 class="card-title">{{apart.title}}</h5>
         <p class="card-text">Локація: {{apart.location}}</p>
         <span class="fw-bold text-primary">{{apart.price}} грн</span>
+        <a href="{% url 'apartment_page' apart.id %}" class="stretched-link"></a>
       </div>
     </div>
   </div>
 </div>
-        <p>{{apart.description }}</p>
-        <p>{{apart.price}} грн </p>
+
     {% endfor %}
     
 {% endblock content %}

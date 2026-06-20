@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Мої бронювання</h1>
+
+    {% for booking in bookings %}
+        <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+            {% if booking.apartment.image %}
+        
+                <img src="{{booking.apartment.image.url}}" class="img-fluid rounded-start" alt="...">
+            {% endif %}           
+            </div>
+            <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{booking.apartment.title}}</h5>
+                <p class="card-text">Локація: {{booking.apartment.location}}</p>
+                <span class="fw-bold text-primary">{{booking.apartment.price}} грн</span>
+                <p class="card-text"><small class="text-muted">Заїзд: {{booking.check_in}} | Виїзд: {{booking.check_out}}</small></p>
+                
+            </div>
+            </div>
+        </div>
+        </div>
+    {% endfor %}
+{% endblock content %}
